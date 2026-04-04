@@ -8,16 +8,23 @@
         label { font-weight: bold; display: block; margin-bottom: 10px; }
         input { width: 100%; padding: 8px; box-sizing: border-box; }
         button { background: #007bff; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+        .info { background: #e7f3ff; padding: 10px; border-radius: 5px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
     <h1>❓ Викторина: Столицы мира</h1>
+    <div class="info">
+        📌 Вопросы расположены в случайном порядке. Удачи!
+    </div>
     <p>Введите столицу для каждой страны:</p>
 
     <form method="POST">
         {% csrf_token %}
 
+        <input type="hidden" name="total_questions" value="{{ total }}">
+
         {% for country in countries %}
+        <input type="hidden" name="country_{{ forloop.counter0 }}" value="{{ country.country }}">
         <div class="question">
             <label>{{ forloop.counter }}. {{ country.country }}</label>
             <input type="text" name="q_{{ forloop.counter0 }}" placeholder="Столица">
