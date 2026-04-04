@@ -1,3 +1,5 @@
+"""URL configuration for the quiz app."""
+
 from django.urls import path
 from . import views
 
