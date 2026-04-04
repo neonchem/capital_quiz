@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Результаты викторины</title>
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .score { font-size: 24px; text-align: center; padding: 20px; background: #d4edda; border-radius: 10px; }
+        .correct { color: green; }
+        .wrong { color: red; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>📊 Результаты викторины</h1>
+
+    <div class="score">
+        🎉 Вы набрали {{ score }} из {{ total }} ({{ percentage|floatformat:1 }}%)
+    </div>
+
+    <table>
+        <tr>
+            <th>Страна</th>
+            <th>Ваш ответ</th>
+            <th>Правильный ответ</th>
+            <th>Результат</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result.country }}</td>
+            <td>{{ result.user_answer|default:"(не введено)" }}</td>
+            <td>{{ result.correct_capital }}</td>
+            <td class="{% if result.is_correct %}correct{% else %}wrong{% endif %}">
+                {% if result.is_correct %}✓ Верно{% else %}✗ Неверно{% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'quiz' %}">🔄 Пройти снова</a> |
+    <a href="{% url 'home' %}">← На главную</a>
+</body>
+</html>

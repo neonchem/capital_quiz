@@ -1,0 +1,36 @@
+{
+  "countries": [
+    {
+      "country": "Россия",
+      "capital": "Москва"
+    },
+    {
+      "country": "Франция",
+      "capital": "Париж"
+    },
+    {
+      "country": "Германия",
+      "capital": "Берлин"
+    },
+    {
+      "country": "Великобритания",
+      "capital": "Лондон"
+    },
+    {
+      "country": "США",
+      "capital": "Вашингтон"
+    },
+    {
+      "country": "Япония",
+      "capital": "Токио"
+    },
+    {
+      "country": "Китай",
+      "capital": "Пекин"
+    },
+    {
+      "country": "Украина",
+      "capital": "Киев"
+    }
+  ]
+}

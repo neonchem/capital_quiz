@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список стран и столиц</title>
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: 0 auto; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #007bff; color: white; }
+        .delete-btn { color: red; text-decoration: none; margin-left: 10px; }
+        .back { display: inline-block; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Страны и их столицы</h1>
+
+    <table>
+        <tr>
+            <th>Страна</th>
+            <th>Столица</th>
+            <th>Действие</th>
+        </tr>
+        {% for country in countries %}
+        <tr>
+            <td>{{ country.country }}</td>
+            <td>{{ country.capital }}</td>
+            <td>
+                <a href="{% url 'delete_country' country.country %}"
+                   onclick="return confirm('Удалить {{ country.country }}?')"
+                   class="delete-btn">🗑️ Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'home' %}" class="back">← На главную</a>
+</body>
+</html>

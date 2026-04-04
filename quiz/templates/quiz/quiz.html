@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Викторина</title>
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: 0 auto; padding: 20px; }
+        .question { margin-bottom: 20px; padding: 15px; background: #f4f4f4; border-radius: 5px; }
+        label { font-weight: bold; display: block; margin-bottom: 10px; }
+        input { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>❓ Викторина: Столицы мира</h1>
+    <p>Введите столицу для каждой страны:</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {% for country in countries %}
+        <div class="question">
+            <label>{{ forloop.counter }}. {{ country.country }}</label>
+            <input type="text" name="q_{{ forloop.counter0 }}" placeholder="Столица">
+        </div>
+        {% endfor %}
+
+        <button type="submit">Проверить ответы</button>
+    </form>
+
+    <a href="{% url 'home' %}">← На главную</a>
+</body>
+</html>
