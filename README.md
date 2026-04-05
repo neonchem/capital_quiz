@@ -32,3 +32,5 @@ pip install django
 # Запустить сервер
 python manage.py runserver
 ```
+
+(c) Захаркина Анна Андреевна, М12-511, 2026 г.
